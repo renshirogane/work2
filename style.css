@@ -1,0 +1,1716 @@
+@charset "UTF-8";
+
+/* ーーーー */
+/* 共通要素 */
+/* ーーーー */
+
+html{
+  background-color: #fff; /* HTML全体の背景色を白に設定 */
+}
+
+body {
+  font-size: 16px; /* ボディ全体のフォントサイズを16pxに設定 */
+  color: #222222;
+}
+
+*{
+  font-family: Noto Sans Jp, Viga, sans-serif; /* 全体のフォントをNoto Sans JPに設定 */
+  box-sizing: border-box; /* ボックスのサイズをborder-boxに設定 */
+  margin: 0; /* 全要素のマージンをリセット */
+  padding: 0; /* 全要素のパディングをリセット */
+}
+
+.range{
+  margin: 0 auto;
+  padding-top: 87px;
+  max-width: 1024px;
+}
+
+.headline_left{
+  text-align: left;
+  margin-left: 34px;
+}
+
+.headline_center{
+  text-align: center;
+}
+
+.headline-backtitle{
+  position: absolute;
+  color: #9797971A;
+  font-size: 136px;
+  font-family: Poppins;
+}
+
+.headline-backtitle_left{
+  transform: translate(-30%, -62%);
+}
+
+.headline-backtitle_center{
+  left: 50%;
+  transform: translate(-50%, -62%); /* 完全に中央に配置 */
+  pointer-events: none; /* テキストのクリックイベントを無効にする場合 */
+}
+
+.headline-text{
+  margin-top: 52px;
+}
+
+h1{
+  font-family: Viga, sans-serif;
+  font-size: 96px;
+  font-weight: 400;
+  text-align: left;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h2{
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 52px;
+  position: relative;
+  }
+
+h2 span{
+    border-bottom: 1px solid black; /* 下線の色と太さ */
+  }
+
+h3{
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #222222;
+  background-color: #AFA86F;
+  width: max-content;
+  margin-inline: auto;
+  }
+
+a {
+  color:#222222; /* リンクのテキスト色を青に設定 */
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.linkbox {
+  margin: 0 auto;
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  max-width: 355px;
+  aspect-ratio: 355/80;
+  justify-content: center;
+  position: relative;
+}
+
+.linkbox__area{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.linkbox__area:hover {
+  background-color: #222222; /* 背景を黒に */
+  color: #fff; /* テキストを白に */
+}
+
+.link-title {
+  font-family: Viga;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 auto;
+}
+
+.link-button {
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+}
+
+.logo{
+  max-width: 251px;
+  aspect-ratio: 251/66;
+}
+
+.controls{
+  max-width: 58px;
+  aspect-ratio: 58/58;
+}
+
+.controls:hover {
+  max-width: 70px; /* ホバー時にサイズを70pxに */
+}
+
+.normal{
+  display: block;
+}
+
+.sp{
+  display: none;
+}
+
+/* ーーーー */
+/* ハンバーガーメニュー */
+/* ーーーー */
+
+.menu-container {
+  display: block;
+  justify-content: center; /* Center the hamburger menu horizontally */
+  align-items: center; /* Center the hamburger menu vertically */
+}
+
+.hamburger {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  flex-direction: column; /* Stack the lines vertically */
+  justify-content: center; /* Center the lines vertically */
+  align-items: center; /* Center the lines horizontally */
+  cursor: pointer;
+  position: relative;
+}
+
+.hamburger span {
+  position: absolute;
+  background: #fff; /* White color for the bars */
+  border-radius: .125rem;
+  display: block;
+  height: 2px; /* Thickness of the bars */
+  width: 52px; /* Width of the bars */
+  margin-top: -2px;
+  transition: all 0.4s; /* Animation transition */
+}
+
+.hamburger p {
+  color: #fff; /* White color for the text */
+  font-size: 12px; /* Adjust font size for better visibility */
+  text-align: center;
+  margin-top: 40px;
+}
+
+.hamburger span:nth-of-type(1) {
+  top: 0%;
+}
+
+.hamburger span:nth-of-type(2) {
+  top: 30%;
+}
+
+.hamburger span:nth-of-type(3) {
+  top: 60%;
+}
+
+.hamburger._emergent span{
+  margin:0;
+  background: #222222;
+}
+
+/* clickedクラスが付与されると線が回転して×に */
+.hamburger._emergent span:nth-of-type(1) {
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.hamburger._emergent span:nth-of-type(2),
+.hamburger._emergent p{
+  opacity: 0; /*真ん中の線は透過*/
+}
+
+.hamburger._emergent span:nth-of-type(3) {
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* メニューのスタイル */
+.hamburger__inner {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* 2列 */
+  padding: 88px 0 208px 406px;
+  position: absolute;
+  top: 0;
+  left: 0; /* 左端に揃える */
+  width: 100%; /* ヘッダーの横幅に合わせる */
+  color: #fff;
+  background-color: #FAF7F1;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1; /* ハンバーガーアイコンの下に表示されるようにする */
+}
+
+@media screen and (max-width: 1319px) {
+
+  /* hamburger__inner右の余白が無くなってくるから */
+  .hamburger__inner {
+    padding: 88px 0 208px 0;
+    grid-template-columns: 1fr 2fr;
+    place-items: center; /* 要素をグリッドの中央に配置 */
+  }
+
+}
+
+
+/* メニュー表示時のスタイル */
+.hamburger__inner._emergent {
+  align-items: center;
+  transform: translateY(0);
+  margin-top: 118px;/* ヘッダーの高さ*/
+}
+
+.hamburger__inner._emergent > *:nth-child(2) {
+  border-left: 1px solid #AFA86F; /* 2列目の左側に境界線を追加 */
+}
+
+/* 左右の列にパディングを追加 */
+.hamburger__inner._emergent > *:nth-child(1) {
+  padding-right: 63px; /* 左列の右側に63pxのスペース */
+}
+
+.hamburger__inner._emergent > *:nth-child(2) {
+  padding-left: 63px; /* 右列の左側に63pxのスペース */
+}
+
+.hamburger__menu-area{
+  max-width: 589px;
+}
+
+.menu {
+  display: grid;
+  max-width: 526px;
+  grid-template-columns: 1fr 1fr; /* 2列 */
+  grid-template-rows: repeat(3, auto); /* 3行 */
+  column-gap: 30px
+}
+
+.hamburger-item {
+  padding: 19px 0;
+  text-align: center;
+  border-bottom: 1px solid #AFA86F; /* 横線を下に追加 */
+}
+
+.hamburger-item:nth-child(2n) {
+  border-left: 1px solid transparent; /* 縦の線は透明にする */
+}
+
+.hamburger-item:nth-child(-n+2) {
+  border-top: 1px solid #AFA86F; /* 最上部のアイテムに横線を追加 */
+}
+
+
+
+
+/* メニューのリスト項目のスタイル */
+.menu a {
+  display: block;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  text-align: left; /* メニュー項目を左に配置 */
+  font-size: 16px;
+}
+
+.menu a:last-child {
+  font-size: 16px;
+  border-bottom: none;
+}
+
+.item_e{
+  font-family: Viga;
+  font-size: 32px;
+}
+
+.hamburger__infobox{
+  display: flex;
+  column-gap: 30px;
+  width: 100%;
+}
+
+.hamburger__infobox-title {
+  display: flex;
+  margin-top: 50px;
+  width: 248px;
+  aspect-ratio: 248/42;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.hamburger__link-details{
+  background: #222222;
+}
+
+.hamburger__link-entry{
+  background: #AFA86F;
+}
+
+.hamburger__link-entry:hover {
+  background: #988C2C;
+}
+
+/* ーーーー */
+/* main */
+/* ファーストビュー */
+/* ーーーー */
+
+.background-section {
+  background-image: url("./img/ファーストビュー1枚目.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeBackground 10s infinite alternate ease-in-out;
+}
+
+@keyframes fadeBackground {
+  0% {
+    background-image: url("./img/ファーストビュー1枚目.png");
+  }
+  100% {
+    background-image: url("./img/ファーストビュー2枚目.png");
+  }
+}
+
+/* ーーーー */
+/* header */
+/* ヘッダー */
+/* ーーーー */
+
+header{
+  padding: 26px 30px;
+}
+
+/* メニューが開いたときにheaderの背景色を変更 */
+header._emergent {
+  background-color: #FAF7F1;
+  transition: background-color 0.5s ease;
+}
+
+.header__inner {
+  display: flex; /* フレックスボックスで配置 */
+  align-items: center; /* 垂直方向の中央に揃える */
+  justify-content: space-between;
+}
+
+.header-symbol a{
+  display: flex;
+  height: 100%;
+}
+
+.header__content{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header__info{
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.infobox__title{
+  display: flex;
+  font-size: 14px;
+  width: 126px;
+  aspect-ratio: 126/42;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.info-details{
+  background: #222222;
+}
+
+.info-entry{
+  background: #AFA86F;
+}
+
+.info-entry:hover {
+  background: #988C2C;
+}
+
+/* ーーーー */
+/* hero */
+/* ファーストビュー */
+/* ーーーー */
+
+.hero__inner{
+  margin-top: 166px;
+  margin-left: 66px;
+  padding-bottom: 38px;
+}
+
+@media screen and (max-width: 1330px) {
+    /* hero__inner右の余白が無くなってくるから */
+  .hero__inner{
+    margin-right: 66px;
+  }
+}
+
+.hero-titile{
+  line-height: 1.2;
+}
+
+/* 親コンテナ */
+.hero-banner {
+  margin-top: 86px;
+  margin-left: -66px;
+  max-width: 515px;
+  background-color: #222222; /* 背景色を黒に */
+  color: white;
+  padding: 12px;
+  text-align: center; /* テキストを中央揃え */
+  font-size: 24px;
+  font-weight: bold;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%); /* 斜めの形を作成 */
+}
+
+.hero__box{
+  display: flex;
+  align-items: center;
+  margin-top: 63px;
+  margin-left: 5px;
+  max-width: 1263px;
+}
+
+.hero__box-area{
+  display: flex;
+  width: 100%;
+  background-color: #FFFFFF;
+  aspect-ratio: 1263/62;
+  border-radius: 62px;
+}
+
+.hero__box-topic{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 60px;
+  background-color: #222222;
+  font-size: 24px;
+  color: #FFFFFF;
+  border-radius: 60px 0 0 62px;
+}
+
+.hero__box-text{
+  display: flex;
+  width: 100%;
+  padding: 19px 47px;
+  text-align: left;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__box-title{
+  padding-left: 43px;
+}
+
+.hero__box-linkarea{
+  display: flex;
+  gap: 6px;
+}
+
+.hero__box-linkarea p{
+  font-weight: 14;
+  font-family:Viga;
+}
+
+/* ーーーー */
+/* about-image */
+/* TETOTEについて */
+/* ーーーー */
+
+.about-image__inner{
+  padding-top: 100px;
+  overflow: hidden; /* はみ出た部分を非表示 */
+}
+
+.about-image__image{
+  display: flex;
+  gap: 34px;
+  justify-content: center; /* 要素を中央に揃える */
+  animation: scroll 20s linear infinite; /* スクロールアニメーションを追加 */
+  position: relative;
+}
+
+.about-image__image img:nth-child(odd) {
+  margin-bottom: 36px;
+}
+
+.about-image__image img:nth-child(even) {
+  margin-top: 36px;
+}
+
+.about-image__image img{
+  max-width: 506px;
+  aspect-ratio: 506/393;
+  border-radius: 60px;
+  object-fit: cover;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.about-image__text{
+  margin-top: -84px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.about-image__text p{
+  font-size: 40px;
+  padding: 7px 11px; 
+  font-weight: bold;
+  color: #222222;
+  background-color: #FFFFFF;
+}
+
+.about-image__text p:nth-child(2) {
+  margin-top: 7px;
+}
+
+/* ーーーー */
+/* about-content */
+/* TETOTEについて */
+/* ーーーー */
+
+.about-content__inner{
+  margin: 0 auto;
+  margin-top: 100px;
+  max-width: 1024px;
+}
+
+.about-content__text {
+  background-image: url("./img/TETOTEについて_背景画像.png");
+  background-size: cover; /* 画像をセクション全体にフィットさせる */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1.8;
+  overflow: hidden; /* はみ出た部分を非表示に */
+  white-space: nowrap;
+  aspect-ratio: 1024/553;
+}
+
+.about-text2{
+  margin-top: 52px;
+}
+
+.about-content__linkbox{
+  margin-top: 6px;
+}
+
+/* ーーーー */
+/* staff */
+/* 社員について */
+/* ーーーー */
+
+.staff__inner{
+  padding-top: 165px;
+  margin: 0 0 0 208px;/* slideの右側は画面の端まで伸ばすため */
+  max-width: 1232px;/* slideの右側は画面の端まで伸ばすため */
+}
+
+.splide__track{
+  margin-top: 52px;
+  margin-left: -8px;/* カンプではスライドとheadlineが左揃えのため */
+}
+
+.splide__list{
+  gap: 43px;
+}
+
+.splide__slide{
+  max-width: 300px;
+}
+
+.slide-image{
+  width: 100%;
+  position: relative;
+}
+
+.slide-image img{
+  width: 100%;
+  aspect-ratio: 300/379;
+  border-radius: 30px;
+}
+
+.slide__content{
+  margin-top: 32px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.slide-title{
+  display: block;
+  font-size: 20px;
+  margin-top: 26px;
+  position: absolute;
+  left: 0;
+  transform: translate(0, -160%);
+  white-space: nowrap;
+}
+
+.slide-title p{
+  background-color: #AFA86F;
+  /* 要素の幅を、コンテンツの幅に合わせる */
+  width: max-content;
+  padding: 0px 6px;
+}
+
+.slide-title p:nth-of-type(2) {
+  margin-top: 6px;
+}
+
+.slide-text{
+  font-size: 16px;
+}
+
+.slide-name{
+  margin-top: 6px;
+  font-size: 24px;
+}
+
+.splide__slide:nth-child(odd) {
+  margin-bottom: 36px;
+}
+
+.splide__slide:nth-child(even) {
+  margin-top: 36px;
+}
+
+.splide__content{
+  margin-top: 75px;
+  margin-left: 8px;/* ＋8px slide_trackで-8px移動した分の修正 */
+  margin-right: 208px;/* slideの右側は画面の端まで伸ばしたため */
+}
+
+.splide__content_box{
+  position: relative;
+}
+
+.splide__button {
+  position: absolute;
+  top: 94% !important;
+  left: 78.4%;/* -0,6％ slide_trackで-8px移動した分の修正 */
+}
+
+.splide__arrow--prev{
+  left: -6em !important;
+}
+
+.splide__arrow--next{
+  right: -2em !important;
+}
+
+.splide__arrow img{
+  max-width: 58px;
+  aspect-ratio: 1/1;
+}
+
+.splide__arrow img:hover {
+  max-width: 70px; /* ホバー時にサイズを70pxに */
+}
+
+.splide__pagination{
+  display: none !important;
+}
+
+
+/* ーーーー */
+/* benefits-career */
+/* 福利厚生について */
+/* ーーーー */
+
+.benefits-career__inner{
+  padding-top: 150px;
+  padding-bottom: 107px;
+}
+
+.benefits-career__content{
+  margin-top: 184px;
+}
+
+.benefits-career__content-area{
+  display: flex;
+  margin-left: 35px;
+  gap: 94px;
+  align-items: center;
+}
+
+.benefits-career__career-box,
+.benefits-career__benefits-box{
+  max-width: 430px;
+  text-align: center;
+  position: relative;
+}
+
+.career-title,
+.benefits-title{
+  text-align: center;
+  padding: 4px;
+}
+
+.career-text,
+.benefits-text{
+  margin-top: 38px;
+  text-align: left;
+}
+
+.career-image,
+.benefits-image{
+  position: relative;
+}
+
+.career-image-top{
+  max-width: 327px;
+  aspect-ratio: 327/277;
+}
+
+.benefits-image-top{
+  max-width: 344px;
+  aspect-ratio: 344/230;
+  margin: 23.5px 0;
+}
+
+.career-image::before,
+.benefits-image::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 430px;
+  height: 430px;
+  background: #FAF7F1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.vertical{
+  display: flex;
+  position: absolute;
+  transform: rotate(-270deg); /* 回転させる */
+  top: 70px;
+  right: -132px;
+}
+
+.vertical p{
+  font-family: Viga;
+  font-size: 24px;
+  letter-spacing: 3.6px; /* letter-spacing: 0.15em; */
+}
+
+.vertical img{
+  transform: rotate(-90deg); /* 回転させる */
+}
+
+/* 位置を各々調節 */
+.career__button-next{
+  margin-top: 6px;
+  margin-left: 34px;
+}
+.benefits__button-next{
+  margin-top: 6px;
+  margin-left: 47px;
+}
+
+.career__writing,
+.benefits__writing{
+  margin-top: 21px;
+}
+
+/* ーーーー */
+/* blog */
+/* 採用ブログについて */
+/* ーーーー */
+
+.blog{
+  background-color:#FAF7F1;
+}
+
+.blog__headline{
+  margin-right: 54px;
+}
+
+.blog__headline-backtitle{
+  transform: translate(-13%, -64%);/* BLOGの位置調節のため */
+}
+
+.blog__headline-text{
+  margin-top: 76px;
+}
+
+.blog__headline-button{
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.blog__headline-button-normal{
+  position: absolute;
+  left: 71%;
+}
+
+.blog__headline-button-sp{
+  display: none;
+}
+
+.blog__headline-button-text{
+  text-decoration: underline; /* アンダーライン復活 */
+  font-weight: bold;
+}
+
+.blog__headline-box{
+  display: flex;
+  align-items: center;
+}
+
+.blog__content{
+  margin:60px 34px 0;
+}
+
+.blog__content-area{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 52px;
+  row-gap: 23px;
+}
+
+.blog__box{
+  display: flex;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  max-width: 452px;
+  aspect-ratio: 452/182;
+}
+
+.blog__box-image{
+  display: inline-block;
+}
+
+.blog__box-writing{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr 1fr; /* 行の比率を1:4:1に設定 */
+  padding:18px 22px 16px;
+}
+
+.blog__box-image img{
+  max-width: 158px;
+  aspect-ratio: 158/182;
+  border-radius: 10px 0 0 10px;
+}
+
+.blog__box-topic{
+  display: flex;
+  font-size: 14px;
+  gap: 4px;
+  align-items: center;
+}
+
+.blog__box-topic img{
+  max-width: 14px;
+  aspect-ratio: 28/28;
+}
+
+.blog__box-title{
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: left;
+  align-items: end;
+  margin-top: 20px;
+  text-decoration: underline; /* アンダーライン復活 */
+}
+
+.blog__box-date{
+  display: flex;
+  font-size: 12px;
+  align-items: end;
+}
+
+/* ーーーー */
+/* recruitment */
+/* 採用情報について */
+/* ーーーー */
+
+.recruitment  {
+  background-color:#FAF7F1;
+}
+
+.recruitment__inner{
+  padding-top: 166px;
+  padding-bottom: 144px;/* 背景色も含むため */
+}
+
+.recruitment__content{
+  margin: 0 auto; 
+  margin-top: 51px;
+  max-width: 956px;
+}
+
+.recruitment__content-area{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 21px;
+}
+
+.recruitment__content-area :nth-child(3) {
+  grid-column: span 2; /* 2つのカラムにまたがる */
+}
+
+.gridbox__area {
+  margin: 0 auto;
+  align-items: center;
+  border: none;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.gridbox__area p{
+  font-weight: bold;
+}
+
+/* ーーーー */
+/* footer */
+/* フッター */
+/* ーーーー */
+
+.footer__image{
+  position: relative;
+}
+
+.footer__image img{
+  aspect-ratio: 1440/488.32;
+  width: 100%;
+  object-fit: cover;
+}
+
+.footer__content{
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 完全に中央に配置 */
+}
+
+.footer__content-inner{
+  display: block;
+  text-align: center;
+  padding: 50px 200px;
+}
+
+.footer__content-text{
+  font-weight: bold;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.entrybox{
+  margin-top: 31px;
+}
+
+.entrybox__area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #AFA86F;
+  padding: 0 253px;
+  position: relative;
+  max-width: 556px;
+  aspect-ratio: 556/70;
+}
+
+.entrybox__area:hover{
+  background-color: #222222; /* 背景を黒に */
+  color: #fff; /* テキストを白に */
+}
+
+.entrybox__area p{
+  font-size: 16px;
+}
+
+.footer__info{
+  padding: 0 64px 64px;
+}
+
+.footer__info-inner{
+  padding:198px 178px 61px;
+  background-color:#FAF7F1;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.footer__list {
+  display: flex;
+  column-gap: 22px;
+  justify-content: flex-start;
+  font-weight: bold;
+  list-style-type: none;
+  flex-wrap: wrap;
+  padding-top: 22px;
+  padding-left: 108px;
+}
+
+.footer-item {
+  margin-bottom: 35px; /* 下部にマージンを追加 */
+}
+
+.footer__icon-text{
+  margin-top: 24px;
+  font-family: Viga;
+  font-size: 12px;
+  text-align: left;
+  color: #999999;
+}
+
+.footer__icon-app{
+  margin-top: 22px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.footer__icon-app img{
+  max-width: 24px;
+  aspect-ratio: 24/24;
+}
+
+@media screen and (max-width: 1040px) {
+
+  /* 1040からrecruitmentセクションの余白が無くなってくるから */
+
+.range {
+  margin: 0 17px;
+  padding-top: 85px;
+}
+
+h1{
+  font-size: clamp(30px, 12.8vw, 96px);   /* =デザインカンプ375px：48px */
+}
+
+h2{
+  font-size: clamp(24px, 8.53vw, 52px);   /* =デザインカンプ375px：32px */
+}
+
+h3{
+  font-size: clamp(16px, 6.4vw, 32px);  /* =デザインカンプ375px：24px */
+}
+
+.link-title,.link-button{
+  font-size: clamp(14px, 4.27vw, 20px);   /* =デザインカンプ375px：16px */
+}
+
+.logo {
+  max-width:clamp(151px, 40vw, 230px);  /* =デザインカンプ375px：151px */
+}
+
+.headline_center{
+  text-align: left;
+}
+
+.headline_left{
+  margin-left: 0;
+}
+
+.headline-backtitle{
+  font-size: clamp(50px, 21.33vw, 96px);   /* =デザインカンプ375px：80px */
+}
+
+.headline-backtitle_left,
+.headline-backtitle_center {
+  transform: translate(1%, -70%);
+}
+
+.headline-backtitle_center{
+  left: 0;
+  transform: translate(6%, -70%);
+
+   /* 以下、採用ブログ「recruitment」がはみ出るため*/
+   width: 93%;
+   overflow: hidden;
+}
+
+.headline-text {
+  margin-top: 35px;
+}
+
+.normal{
+  display: none;
+}
+
+.sp{
+  display: block;
+}
+
+.controls {
+  max-width: 42px;
+}
+
+.controls:hover {
+  max-width: 55px; /* ホバー時にサイズを55pxに */
+}
+
+.linkbox{
+  max-width: 277px;
+}
+
+/* ーーーー */
+/* ハンバーガーメニュー */
+/* ーーーー */
+
+.hamburger{
+  margin-top: -3px;
+  max-width: 32px;
+  max-height: 34px;
+}
+
+.hamburger span{
+  max-width: 32px;
+}
+
+.hamburger span:nth-of-type(1) {
+  top: 0%;
+}
+
+.hamburger span:nth-of-type(2) {
+  top: 25%;
+}
+
+.hamburger span:nth-of-type(3) {
+  top: 50%;
+}
+
+.hamburger p{
+  margin-top: 20px;
+  font-size: 10px;
+}
+
+.hamburger__inner{
+    padding:36px 0 192px 0;
+}
+
+.hamburger__inner._emergent {
+  margin-top: clamp(54px, 13vw, 68px)
+}
+
+.hamburger__inner {
+  padding-left: 0;
+}
+
+.hamburger__inner._emergent > *:nth-child(2) {
+  padding: 0 12px;
+}
+
+.hamburger-symbol{
+  display: none;
+}
+
+.menu{
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  max-width: 1016px;
+  width: 92vw;
+}
+
+.hamburger-item{
+  padding: 10px 0 12px;
+}
+
+/* カンプに従い順序入れ替え */
+.hamburger-item:nth-child(1) { order: 1; } /* ABOUT US */
+.hamburger-item:nth-child(3) { order: 2; } /* STAFF */
+.hamburger-item:nth-child(5) { order: 3; } /* BLOG */
+.hamburger-item:nth-child(2) { order: 4; } /* BENEFITS */
+.hamburger-item:nth-child(4) { order: 5; } /* CARRER */
+.hamburger-item:nth-child(6) { order: 6; } /* FAQ */
+
+.item_e{
+  font-size: clamp(10px, 4.8vw, 32px);  /* =デザインカンプ375px：18px */
+}
+
+.item_j{
+  font-size: clamp(8px, 3.2vw, 16px);  /* =デザインカンプ375px：12px */
+}
+
+.hamburger__infobox{
+  display: flex;
+  flex-direction: column;
+  row-gap: 13px ;
+  margin-top: 53px;
+}
+
+.hamburger__infobox-title{
+  margin: 0;
+  width: 100%; /* 幅の制限を解除 */
+  max-width: 248px; /* 最大幅を248pxに設定 */
+}
+
+.hamburger__inner._emergent > *:nth-child(2) {
+  border-left: none;
+}
+
+.hamburger-item:nth-child(-n+2) {
+  border-top: none;
+}
+
+.hamburger-item:nth-child(1) {
+  border-top: 1px solid black;
+}
+
+.hamburger-item:nth-child(5),
+ .hamburger-item:nth-child(6) {
+  border-bottom: 1px solid black;;
+}
+
+/* ーーーー */
+/* header */
+/* ヘッダー */
+/* ーーーー */
+
+header {
+  padding: 8px 12px;
+  padding-bottom: 80px;/* hamburger__innerとの間に隙間ができるため */
+}
+
+
+.header__info{
+  display: none;
+}
+/* ーーーー */
+/* main */
+/* ファーストビュー */
+/* ーーーー */
+
+.hero__inner {
+  margin: 282px 12px 0;
+  padding-bottom: 10px;
+}
+
+.hero-banner{
+  margin-top: 18px;
+  margin-left: -12px;
+  max-width: 60.8VW;
+  font-size: clamp(8px, 3.2vw, 24px);  /* =デザインカンプ375px：12px */
+}
+
+.hero__box{
+  margin-top: 21px;
+}
+
+.hero__box-area{
+  aspect-ratio: unset;
+}
+
+.hero__box-topic {
+  padding: 10px 12px;
+  padding-left: 6px;
+  font-size: clamp(8px, 2.67vw, 24px);  /* =デザインカンプ375px：10px */
+}
+
+.hero__box-text {
+  padding: 6px 10px;
+  font-size: clamp(8px, 3.2vw, 24px);  /* =デザインカンプ375px：12px */
+}
+
+.hero__box-title {
+  padding: 0;
+}
+
+.hero__box-linkarea {
+  display: none;
+}
+
+/* ーーーー */
+/* about-image */
+/* TETOTEについて */
+/* ーーーー */
+
+.about-image__inner{
+  padding-top: 46px;
+}
+
+.about-image__image {
+  gap: 16px;
+}
+
+.about-image__image img {
+  max-width: 270px;
+}
+
+.about-image__image img:nth-child(odd) {
+  margin-bottom: 21px;
+}
+
+.about-image__image img:nth-child(even) {
+  margin-top: 21px;
+}
+
+.about-image__text {
+  margin-top: -20px;
+}
+
+
+.about-image__text p{
+  font-size: clamp(16px, 6.4vw, 40px);  /* =デザインカンプ375px：24px */
+}
+
+.about-content {
+  margin: 80px 17px 0;
+}
+
+.about-content__inner{
+  margin: 0;
+}
+
+.about-content__text{
+  background-position: center top; /* 画像を中央上部に配置 */
+  background-size: 93% auto; /* 横幅をデザインカンプと同じに、高さは自動調整 */
+  font-size: clamp(10px, 4.8vw, 36px);  /* =デザインカンプ375px：18px */
+  line-height: 2.5;
+  aspect-ratio: unset;
+}
+
+.about-content__linkbox{
+  margin-top: 39px;
+}
+
+.about-text2 {
+  margin-top: 39px;
+}
+
+/* ーーーー */
+/* staff */
+/* 社員について */
+/* ーーーー */
+
+.splide__track{
+  margin-left: -14px;
+}
+
+.splide__list{
+  gap: 23px;
+}
+
+.splide__slide{
+  max-width: 246px;
+}
+
+.splide__slide:nth-child(odd) {
+  margin-bottom: 25px;
+}
+
+.splide__slide:nth-child(even) {
+  margin-top: 25px;
+}
+
+.slide__content{
+  margin-top: 28px;
+}
+
+.slide-title{
+  font-size: clamp(12px, 4.27vw, 16px);  /* =デザインカンプ375px：16px */
+  margin-top: 32px;
+}
+
+.slide-title p{
+  padding: 4px 7px;
+}
+
+.slide-text{
+  font-size: clamp(8px, 3.2vw, 16px);  /* =デザインカンプ375px：12px */
+}
+
+.slide-name{
+  margin-top: 8px;
+  font-size: clamp(10px, 5.33vw, 20px);  /* =デザインカンプ375px：20px */
+}
+
+.splide__content{
+  margin-top: 59px;
+  margin-left: 13px;
+  margin-right: 0;
+}
+
+.splide__button{
+  display: none;
+}
+
+/* ーーーー */
+/* benefits-career */
+/* 福利厚生について */
+/* ーーーー */
+
+.benefits-career__inner{
+  padding-bottom: 80px;
+}
+
+.benefits-career__content{
+  margin-top: 95px;
+}
+
+.benefits-career__content-area{
+  flex-direction: column; /* 縦並びにするために追加 */
+  row-gap: 81px;
+  margin-left: 0;
+}
+
+.career-image::before, .benefits-image::before {
+  width: 251px;
+  height: 251px;
+  transform: translate(-50%, -50%);
+}
+
+.career-image-top {
+  max-width: 194px;
+  aspect-ratio: 194 / 164;
+}
+.benefits-image-top {
+  max-width: 202px;
+  aspect-ratio: 202 / 135;
+  margin: 14.5px 0;
+}
+
+.vertical {
+  top: 24%;
+  right: -8%;
+}
+
+.career__button{
+  column-gap: 12px;
+}
+
+.benefits__button{
+  column-gap: 20px;
+}
+
+.career__button-next,
+.benefits__button-next{
+  margin: 0;
+}
+
+.vertical p{
+  font-size: clamp(10px, 3.73vw, 15px);  /* =デザインカンプ375px：14px */
+  letter-spacing: 0.15em;
+}
+
+.career__writing,
+.benefits__writing{
+  margin-top: 15px;
+}
+
+.career-text,
+.benefits-text{
+  margin-top: 21px;
+}
+
+
+/* ーーーー */
+/* blog */
+/* 採用ブログについて */
+/* ーーーー */
+
+.blog__inner{
+  padding-top: 69px;
+}
+
+.blog__headline{
+  margin: 0;
+}
+
+.blog__content{
+  margin:43px 0 0;
+}
+
+.blog__content-area{
+  margin-left: 0;
+  grid-template-columns: 1fr; /* 縦一列に設定 */
+  grid-template-rows: repeat(4, auto); /* 4行に設定 */
+  row-gap: 9px;
+}
+
+.blog__box {
+  max-width: none;
+  aspect-ratio: unset;
+}
+
+.blog__box-image img {
+  width: 121px;
+  aspect-ratio: 121 / 121;
+  border-radius: 10px 0 0 10px;
+}
+.blog__box-writing {
+  padding: 4px 16px;
+  height: 121px; /* グリット内の余分な余白をなくすため */
+}
+
+.blog__box-topic{
+  font-size: 12px;
+}
+
+.blog__box-title {
+  margin-top: 8px;
+  font-size: clamp(10px, 3.73vw, 18px);  /* =デザインカンプ375px：14px */
+}
+
+.blog__headline-button-normal{
+  display: none;
+}
+
+.blog__headline-button-sp{
+  display: flex;
+  margin-top: 51px;
+}
+
+.blog__headline-button-next{
+  max-width: 58px;
+}
+
+.blog__headline-button-next:hover{
+  max-width: 70px;
+}
+
+/* ーーーー */
+/* recruitment */
+/* 採用情報について */
+/* ーーーー */
+
+.recruitment__inner{
+  padding-top: 80px;
+  padding-bottom: 89px;
+  overflow: hidden;
+}
+
+.recruitment__content{
+  margin-top: 30px;
+}
+
+.recruitment__content-area{
+  grid-template-columns: 1fr; /* 縦一列に設定 */
+  grid-template-rows: repeat(3, auto); /* 3行に設定 */
+}
+.recruitment__content-area :nth-child(3) {
+  grid-column: auto;/* グリットの連結をキャンセル */
+}
+
+.gridbox__area{
+  padding-top: 29px;
+  padding-bottom: 25px;
+}
+
+.gridbox__area p{
+  font-size: clamp(10px, 5.33vw, 24px);/* =デザインカンプ375px：20px */
+}
+
+
+/* ーーーー */
+/* footer */
+/* フッター */
+/* ーーーー */
+
+.footer__image img {
+  aspect-ratio: 375 / 250;
+}
+
+.footer__content {
+  max-width: clamp(10px, 91.47vw, 956px);  /* =デザインカンプ375px：343px */
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+}
+
+.footer__content-inner {
+  padding: 24px;
+}
+
+.footer__content-text{
+  font-size: clamp(10px, 3.73vw, 16px);  /* =デザインカンプ375px：14px */
+  line-height: 2.5;
+}
+
+.entrybox{
+  max-width: 200px;
+  aspect-ratio: 200 / 54;
+  margin: 24px auto 0;
+}
+
+.entrybox__area {
+  padding: 0;
+  max-width: 200px;
+  aspect-ratio: 200 / 54;
+}
+
+.footer__info{
+  background-color: #FAF7F1;
+  padding: 166px 0 0;
+}
+
+.footer__info-inner {
+  padding: 0;
+  grid-template-columns: 1fr; /* 縦一列に設定 */
+  grid-template-rows: repeat(4, auto); /* 4行に設定 */
+  row-gap: 29px;
+}
+
+/* footer-symbol logo */
+.footer__info-inner > :nth-child(1) {
+  grid-area: 3 / 1 / 4 / 2; /* 1番目のアイテムを3行目に配置 */
+  margin: 0 auto;
+  max-width: 251px;
+}
+
+.footer-symbol .logo{
+  max-width: clamp(251px, 40vw, 300px);
+}
+
+/* footer__list */
+.footer__info-inner > :nth-child(2) {
+  grid-area: 1 / 1 / 2 / 2; /* 2番目のアイテムを1行目に配置 */
+  flex-direction: column; /* 縦並びにする */
+  text-align: center;
+  padding: 0;
+  font-size: clamp(10px, 3.73vw, 16px);  /* =デザインカンプ375px：14px */
+}
+
+.footer-item{
+  margin-bottom: 14px;
+}
+
+.footer__info-inner > :nth-child(3) {
+  grid-area: 4 / 1 / 5 / 2; /* 3番目のアイテムを4行目に配置 */
+  margin: 0 auto;
+}
+
+/* footer__icon-app */
+.footer__info-inner > :nth-child(4) {
+  grid-area: 2 / 1 / 3 / 2; /* 4番目のアイテムを2行目に配置 */
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+}
